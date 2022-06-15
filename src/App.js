@@ -1,21 +1,16 @@
-import logo from './logo.png';
 import './style.css';
-// import '/public/style.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import React, { useMemo, useState } from 'react';
-import Deck from './components/Deck.js';
 import Decks from './components/Decks.js'
 import AddDeck from './components/AddDeck.js';
-import AddDeckDialog from './components/AddDeckDialog.js'
-import Navbar from './components/Navbar.js';
-import TrashDeck from './components/TrashDeck.js';
-
+import zorbiHeader from './zorbi-header.png'
+import Navbar from './components/Navbar';
 function Home() {
   return (
-    <div className="mt-40 space-y-4">
-      <Navbar />
-      {/* <Deck /> */}
-      <Decks type="regular"/>
+    <div className="space-y-4">
+      <img src={zorbiHeader} className="mb-6" alt="Header" />
+      <Navbar type="Home"/>
+        <Decks type="regular"/>
       <AddDeck />
     </div>
   );
@@ -23,9 +18,10 @@ function Home() {
 
 function Trash() {
   return(
-    <div className="mt-40 space-y-4">
+    <div className="space-y-4">
+      <img src={zorbiHeader} className="mb-6" alt="Header" />
+      <Navbar type="Trash"/>
       <Decks type="trash"/>
-      {/* <TrashDeck /> */}
 
     </div>
 
@@ -70,7 +66,3 @@ function App() {
 }
 
 export default App;
-
-// Deck
-// 
-// asd
