@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.deck-enter {
+    opacity: 0;
+}
+.deck-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-out;
+}
+.deck-exit {
+    opacity: 1;
+}
+.deck-exit-active {
+    opacity: 0;
+    transition: opacity 250ms ease-out;
+}
