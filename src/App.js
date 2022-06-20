@@ -1,4 +1,4 @@
-import './style.css';
+// import './style.css';
 import { Routes, Route } from 'react-router-dom';
 import React, { useMemo, useState } from 'react';
 import Decks from './components/Decks.js'
@@ -31,8 +31,8 @@ function Trash() {
 const Main = () => {
   return (
     <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/trash" element={<Trash />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/trash" element={<Trash />} />
     </Routes>
 
   );
