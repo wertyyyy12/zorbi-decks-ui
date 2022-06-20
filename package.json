@@ -1,7 +1,7 @@
 {
   "name": "zorbi-decks-ui",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "homepage": "https://wertyyyy12.github.io/zorbi-decks-ui/",
   "dependencies": {
     "@headlessui/react": "^1.6.4",
