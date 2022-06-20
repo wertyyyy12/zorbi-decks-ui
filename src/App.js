@@ -7,7 +7,7 @@ import zorbiHeader from './zorbi-header.png'
 import Navbar from './components/Navbar';
 function Home() {
   return (
-    <div className="space-y-4">
+    <div className="">
       <img src={zorbiHeader} className="mb-6" alt="Header" />
       <Navbar type="Home"/>
         <Decks type="regular"/>
