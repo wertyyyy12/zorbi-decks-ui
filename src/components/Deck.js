@@ -4,7 +4,7 @@ import { Flipped } from 'react-flip-toolkit'
 
 export default function Deck({name, allDecksContext, type}) {
 
-  const [dropTargetColor, setDropTargetColor] = useState("gray-50") //state is tailwind css color class
+  const [dropTargetColor, setDropTargetColor] = useState("#f9fafb") //state will be hex colors
   const {allDecks, setAllDecks} = allDecksContext
   const onDelete = () => {
     setAllDecks({  
