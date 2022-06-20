@@ -2,7 +2,7 @@
   "name": "zorbi-decks-ui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wertyyyy12.github.io/zorbi-decks-ui/",
+  "homepage": "",
   "dependencies": {
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
