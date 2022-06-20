@@ -1,10 +1,23 @@
 import { CollectionIcon, XCircleIcon, ClockIcon, GlobeAltIcon, RefreshIcon } from '@heroicons/react/solid';
 import {useState} from 'react' 
-import { Flipped } from 'react-flip-toolkit'
+import { Flipped, Flipper } from 'react-flip-toolkit'
 
 export default function Deck({name, allDecksContext, type}) {
 
-  const [dropTargetColor, setDropTargetColor] = useState("#f9fafb") //state will be hex colors
+  const hoverStyle = {
+    backgroundColor: "#3b82f6",
+    height: "56px",
+  }
+
+  const regularStyle = {
+    backgroundColor: "#f9fafb",
+    height: "16px",
+  }
+
+  const [dropTargetStyle, setdropTargetStyle] = useState(regularStyle) //state will be hex colors
+
+
+
   const {allDecks, setAllDecks} = allDecksContext
   const onDelete = () => {
     setAllDecks({  
@@ -21,7 +34,7 @@ export default function Deck({name, allDecksContext, type}) {
   }
 
   const onDeckMove = (e) => {
-    setDropTargetColor("#f9fafb")
+    setdropTargetStyle(regularStyle)
     if (e.dataTransfer.getData('text') !== e.target.getAttribute('name')) {
       e.preventDefault();
     }
@@ -61,7 +74,7 @@ export default function Deck({name, allDecksContext, type}) {
       <button className="flex flex-row text-violet-100 hover:text-white hover:bg-violet-800 p-1 rounded-lg hover:shadow-md"><GlobeAltIcon  className="h-8 w-8 mr-1" alt="" /> Review</button>
     </>
 
-    dropTarget = <div style={{backgroundColor: dropTargetColor}} className={`flex h-4 bg-gray-50`} onDragOver={(e) => {setDropTargetColor("#3b82f6"); e.preventDefault()}} onDragLeave={() => {setDropTargetColor("#f9fafb")}} onDrop={((e) => onDeckMove(e))} name={name}></div>  
+    dropTarget = <div style={{...dropTargetStyle, transition: "height 100ms"}} className={`flex h-4 bg-gray-50`} onDragOver={(e) => {setdropTargetStyle(hoverStyle); e.preventDefault()}} onDragLeave={() => {setdropTargetStyle(regularStyle)}} onDrop={((e) => onDeckMove(e))} name={name}></div>  
 
     
   }
@@ -85,6 +98,7 @@ export default function Deck({name, allDecksContext, type}) {
           </div>
         </Flipped>
         {dropTarget}
+
       </>
   );
 }
