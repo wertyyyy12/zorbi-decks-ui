@@ -7,11 +7,11 @@ import { BrowserRouter as Router, HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <HashRouter>
+  <Router>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </HashRouter>
+  </Router>
 
 );
 
