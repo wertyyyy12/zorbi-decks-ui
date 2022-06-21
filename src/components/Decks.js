@@ -1,11 +1,7 @@
 import Deck from "./Deck.js"
 import { useContext } from 'react';
 import { allDecksContext } from '../App.js';
-import {
-    CSSTransition,
-    TransitionGroup
-  } from 'react-transition-group';
-  import { Flipper } from 'react-flip-toolkit'
+import { Flipper } from 'react-flip-toolkit'
   
 import '../style.css';
 export default function Decks({type}) {
@@ -23,9 +19,11 @@ export default function Decks({type}) {
 
     if (type === "trash") {
         return (
-            <TransitionGroup component={null}>
-                {allDecks.trash.map((deck) => <CSSTransition key={deck} component={null} timeout={250} classNames="deck"><Deck name={deck} type="trash" allDecksContext={decksContext} key={deck}/></CSSTransition>)}
-            </TransitionGroup>
+            <>
+            <Flipper flipKey={allDecks.trash.join('')}>
+                {allDecks.trash.map((deck) => <Deck name={deck} type="trash" allDecksContext={decksContext} key={deck}/>)}
+            </Flipper>
+            </>
         )
     }
 }

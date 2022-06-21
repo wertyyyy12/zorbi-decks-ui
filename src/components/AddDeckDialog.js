@@ -68,7 +68,7 @@ export default function AddDeckDialog({open, setOpen}) {
                         Add Deck
                       </Dialog.Title>
                       <div className="mt-2">
-                        <input type="text" className="form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-violet-600 focus:outline-none" id="DeckNameTextArea" maxLength="50" rows="1" placeholder="Deck Name" />
+                        <input type="text" autoComplete="off" className="form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-violet-600 focus:outline-none" id="DeckNameTextArea" maxLength="50" rows="1" placeholder="Deck Name" />
                       </div>
                       <div id="Error" className="text-red-500 pt-1"></div>
                     </div>

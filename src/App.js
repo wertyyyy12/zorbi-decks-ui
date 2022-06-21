@@ -5,6 +5,8 @@ import Decks from './components/Decks.js'
 import AddDeck from './components/AddDeck.js';
 import zorbiHeader from './zorbi-header.png'
 import Navbar from './components/Navbar';
+import Review from './components/Review';
+
 function Home() {
   return (
     <div className="">
@@ -18,7 +20,7 @@ function Home() {
 
 function Trash() {
   return(
-    <div className="space-y-4">
+    <div className="">
       <img src={zorbiHeader} className="mb-6" alt="Header" />
       <Navbar type="Trash"/>
       <Decks type="trash"/>
@@ -28,11 +30,13 @@ function Trash() {
   );
 }
 
+
 const Main = () => {
   return (
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trash" element={<Trash />} />
+        <Route path="/review" element={<Review />} />
     </Routes>
 
   );

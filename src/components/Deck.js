@@ -1,11 +1,12 @@
 import { CollectionIcon, XCircleIcon, ClockIcon, GlobeAltIcon, RefreshIcon } from '@heroicons/react/solid';
 import {useState} from 'react' 
-import { Flipped, Flipper } from 'react-flip-toolkit'
+import { Flipped } from 'react-flip-toolkit'
+import { Link } from 'react-router-dom'
 
 export default function Deck({name, allDecksContext, type}) {
 
   const hoverStyle = {
-    backgroundColor: "#3b82f6",
+    backgroundColor: "#9ca3af",
     height: "56px",
   }
 
@@ -65,21 +66,21 @@ export default function Deck({name, allDecksContext, type}) {
   
   let additionalClasses, DeckButtons, dropTarget;
   if (type === "regular") {
-    additionalClasses = "bg-violet-600 hover:bg-violet-700 hover:cursor-pointer"
+    additionalClasses = "bg-teal-600 hover:bg-teal-700 hover:cursor-pointer"
     
     DeckButtons = 
     <>
-      <button className="flex flex-row text-violet-100 hover:text-white hover:bg-violet-800 p-1 rounded-lg mr-5 hover:shadow-md"> <ClockIcon className="h-8 w-8 mr-1" />Load </button>
-      <button className="flex flex-row text-violet-100 hover:text-white hover:bg-violet-800 p-1 rounded-lg mr-5 hover:shadow-md" onClick={onDelete}><XCircleIcon className="h-8 w-8 mr-1"/>Delete </button>
-      <button className="flex flex-row text-violet-100 hover:text-white hover:bg-violet-800 p-1 rounded-lg hover:shadow-md"><GlobeAltIcon  className="h-8 w-8 mr-1" alt="" /> Review</button>
+      <button className="flex flex-row text-violet-100 hover:text-white hover:bg-teal-800 p-1 rounded-lg mr-5 hover:shadow-md"> <ClockIcon className="h-8 w-8 mr-1" />Load </button>
+      <button className="flex flex-row text-violet-100 hover:text-white hover:bg-teal-800 p-1 rounded-lg mr-5 hover:shadow-md" onClick={onDelete}><XCircleIcon className="h-8 w-8 mr-1"/>Delete </button>
+      <Link to="/review"><button className="flex flex-row text-violet-100 hover:text-white hover:bg-teal-800 p-1 rounded-lg hover:shadow-md"><GlobeAltIcon  className="h-8 w-8 mr-1" alt="" /> Review</button></Link>
     </>
 
-    dropTarget = <div style={{...dropTargetStyle, transition: "height 100ms"}} className={`flex h-4 bg-gray-50`} onDragOver={(e) => {setdropTargetStyle(hoverStyle); e.preventDefault()}} onDragLeave={() => {setdropTargetStyle(regularStyle)}} onDrop={((e) => onDeckMove(e))} name={name}></div>  
+    dropTarget = <div style={{...dropTargetStyle, transition: "height 100ms"}} className={`flex h-4 bg-gray-50 w-[95%] m-auto rounded-lg`} onDragOver={(e) => {setdropTargetStyle(hoverStyle); e.preventDefault()}} onDragLeave={() => {setdropTargetStyle(regularStyle)}} onDrop={((e) => onDeckMove(e))} name={name}></div>  
 
     
   }
   if (type === "trash") {
-    additionalClasses = "bg-gray-600"
+    additionalClasses = "bg-gray-600 mb-4"
     DeckButtons = 
     <button className="flex flex-row text-violet-100 hover:text-white hover:bg-gray-800 p-1 rounded-lg mr-5 hover:shadow-md" onClick={onRestore}><RefreshIcon className="h-8 w-8 mr-1" />Restore </button>
   }
@@ -87,14 +88,11 @@ export default function Deck({name, allDecksContext, type}) {
   return (
     <>
       <Flipped flipId={name}>
-        <div>
-          <div name={name} draggable={true} onDragStart={(event) => {event.dataTransfer.setData("text", event.target.getAttribute('name')); event.dataTransfer.effectAllowed = "move";}} className={`grid grid-rows-1 grid-flow-col justify-items-start space-x-16 text-2xl text-white font-bold w-full p-2 shadow-md ${additionalClasses}`}>
+          <div name={name} draggable={true} onDragStart={(event) => {event.dataTransfer.setData("text", event.target.getAttribute('name')); event.dataTransfer.effectAllowed = "move";}} className={`grid grid-rows-1 grid-flow-col justify-items-start space-x-16 text-2xl text-white font-bold w-[95%] rounded-lg m-auto p-2 ${additionalClasses}`}>
             <div className="flex"><CollectionIcon className="h-10 w-10 mr-2 ml-6 shrink-0" /><span>{name}</span></div> 
             <div className="flex justify-self-end">
               {DeckButtons}
             </div>
-          </div>
-
           </div>
         </Flipped>
         {dropTarget}
